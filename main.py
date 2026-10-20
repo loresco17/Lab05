@@ -39,13 +39,12 @@ def main(page: ft.Page):
     new_tipo=''
     new_marca=''
     new_anno=''
-    new_valore=0
-    def handleAdd(val):
+    def handleAdd(e):
         val = txtout.value
         txtout.value = int(val) + 1
         txtout.update()
 
-    def handleRemove(val):
+    def handleRemove(e):
         val = txtout.value
         txtout.value = int(val) - 1
         txtout.update()
@@ -54,11 +53,11 @@ def main(page: ft.Page):
     input_anno=ft.TextField(value=new_anno, label="Anno acquisto")
     minus = ft.IconButton(icon=ft.Icons.REMOVE,
                              icon_color="red",
-                             icon_size=24, on_click=handleRemove)
+                             icon_size=20, on_click=handleRemove)
     add = ft.IconButton(icon=ft.Icons.ADD,
                            icon_color="green",
-                           icon_size=24, on_click=handleAdd)
-    txtout = ft.TextField(width=100, disabled=True,
+                           icon_size=20, on_click=handleAdd)
+    txtout = ft.TextField(width=50, disabled=True,
                           value='0',
                           text_align=ft.TextAlign.CENTER)
 
@@ -83,7 +82,9 @@ def main(page: ft.Page):
 
     def aggiungi_strumento_ft(tipo, marca, anno, valore):
         try :
-            return deposito.aggiungi_strumento(tipo, marca, int(anno), float(valore))
+            anno=int(anno)
+            valore=float(valore)
+            return deposito.aggiungi_strumento(tipo, marca, anno, valore)
         except ValueError:
             return alert.show_alert("Valori non validi")
 
@@ -92,7 +93,7 @@ def main(page: ft.Page):
     pulsante_conferma_responsabile = ft.ElevatedButton("Conferma", on_click=conferma_responsabile)
 
     # Pulsanti per la gestione dell'inserimento di un nuovo strumento
-    pulsante_aggiungi_strumento = ft.ElevatedButton("Aggiungi strumento", on_click=aggiungi_strumento_ft(new_tipo, new_marca, new_anno, new_valore))
+    pulsante_aggiungi_strumento = ft.ElevatedButton("Aggiungi strumento", on_click=aggiungi_strumento_ft(new_tipo, new_marca, new_anno, txtout.value))
 
     # --- LAYOUT ---
     page.add(
@@ -110,10 +111,12 @@ def main(page: ft.Page):
                alignment=ft.MainAxisAlignment.CENTER),
 
         # Sezione 3
+        ft.Divider(),
         ft.Text("Aggiungi nuovo strumento", size=20),
-        ft.Row(spacing=200,
-               controls=[input_tipo, input_marca, input_anno, minus, txtout, add,
-                         pulsante_aggiungi_strumento],
+        ft.Row(spacing=20,
+               controls=[input_tipo, input_marca, input_anno, minus, txtout, add],
+               alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row(controls=[pulsante_aggiungi_strumento],
                alignment=ft.MainAxisAlignment.CENTER),
 
         # Sezione 4
