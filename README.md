@@ -2,7 +2,7 @@
 
 #### Argomenti
 
-- Utilizzo pacchetto `Flet` di Python (suggerita v0.28.3)
+- Utilizzo pacchetto `Flet` di Python (suggerita v1.0.4)
 
 ---
 > **❗ ATTENZIONE:**
@@ -46,13 +46,13 @@ grafica. In tale file è necessario implementare il seguente layout, organizzato
 - **Sezione 2**: Modificare il nome del responsabile - già fatto ✅
   - Un controllo `Text` con testo "Modifica Informazioni".
   - Un controllo `TextField` per modificare il nome.
-  - Un controllo `ElevatedButton` "Conferma" per confermare la modifica.
+  - Un controllo `Button` "Conferma" per confermare la modifica.
 - **Sezione 3**: Aggiunta di Nuovi Strumenti - TODO 📝
   - Un controllo `Text` con testo "Aggiungi Nuovo Strumento".
   - Aggiungere 3 controlli `TextField` per inserire tipo, marca e anno di acquisto.
   - Aggiungere un contatore (esempio nelle slide dell'ultima lezione) per incrementare o decrementare il
     valore in euro dello strumento.
-  - Aggiungere un controllo `ElevatedButton` "Aggiungi strumento" che permette di confermare l'aggiunta
+  - Aggiungere un controllo `Button` "Aggiungi strumento" che permette di confermare l'aggiunta
     dello strumento.
 
     Al click del pulsante "Aggiungi strumento", controllare che i campi numerici siano validi, aggiungere
